@@ -65,9 +65,19 @@ public class DocenteController {
 		
 		return mv;
 		
-		
 	}
-
+	@PostMapping("/alterar_docente")
+	public ModelAndView update(
+			ModelMap model,
+			@ModelAttribute("docenteEntity") DocenteEntity docenteEntity,
+			RedirectAttributes atributes) throws Exception
+	
+	{
+		ModelAndView mv = new ModelAndView("redirect:/docente");
+		atributes.addFlashAttribute("mensagem",docenteService.save(docenteEntity));
+		
+		return mv;
+}
 }
 
 
